@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3171931688890748573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1163893535157301817}
+  - component: {fileID: 7231484349837121795}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1163893535157301817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3171931688890748573}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1722506, y: -0.564779, z: -0.00025566644}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7231484349837121795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3171931688890748573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3439b63288a2f3f419319c7e575d1fb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shooter: {fileID: 2848052598224342476, guid: e148d6e65d630484ab53b29f75cd7140, type: 3}
+  Speedster: {fileID: 2848052598224342476, guid: e94a3b484a8c6d94a870a4d44fcc8ff9, type: 3}
+  Sniper: {fileID: 4972535863349069260, guid: ac75e76b89b00af499ccf9062ff323a0, type: 3}
+  Lightweight: {fileID: 4106479357820418996, guid: b63aeba4cd15cd84f98957687ec0bd1b, type: 3}
+  Tank: {fileID: 3257684900886630361, guid: feb4367ebaf08dc4caee422843028b2b, type: 3}
+  Trapper: {fileID: 987372137995509094, guid: 33be0bc6f6436f24ca68b23a71215cf2, type: 3}
+  HealthManager1: {fileID: 891420615065079678, guid: 5d0fd66d04e92d4479a8cc312e5738d0, type: 3}
+  HealthManager2: {fileID: 7713815727548928555, guid: 12228e98f23036349b57eea50ba6325b, type: 3}
+  HealthManager3: {fileID: 7352923299989675920, guid: 225943885722cf44197e977cbe7425cc, type: 3}
+  Canvas: {fileID: 7196998422251224934, guid: 756ef13a4946ae94cbf5d4e07b7de0b5, type: 3}
+  HealthBar1: {fileID: 3588926240115373646, guid: 79463137c4630b94999cee1202697ca2, type: 3}
+  HealthBar2: {fileID: 3188324730945832501, guid: 8d0b5476b6ec2204ba75b60ce8055779, type: 3}
+  HealthBar3: {fileID: 3067002467674900272, guid: dbf301bd71c5c6b45bb2d4048c48551e, type: 3}
+  HealthBar1Obj: {fileID: 3588926240115373646, guid: 79463137c4630b94999cee1202697ca2, type: 3}
+  HealthBar2Obj: {fileID: 3188324730945832501, guid: 8d0b5476b6ec2204ba75b60ce8055779, type: 3}
+  HealthBar3Obj: {fileID: 3067002467674900272, guid: dbf301bd71c5c6b45bb2d4048c48551e, type: 3}
