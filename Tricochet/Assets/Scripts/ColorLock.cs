@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class ColorLock : MonoBehaviour
 {
-    //IN CODE CHANGE THE LAYERS AND TAGS OF EACH PLAYER AND BULLET TO MATCH THEIR PLAYERNUM, ALSO CHANGE COLOR OF HEALTH!!!
-
     [SerializeField]
     Toggle p1Color;
 

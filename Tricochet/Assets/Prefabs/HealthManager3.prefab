@@ -47,4 +47,6 @@ MonoBehaviour:
   HealthBar: {fileID: 3067002467674900272, guid: dbf301bd71c5c6b45bb2d4048c48551e, type: 3}
   Canvas: {fileID: 7196998422251224934, guid: 49700ad38ff699a4592a3b51e6148818, type: 3}
   GameManager: {fileID: 3171931688890748573, guid: 1af5944ed98e8314e92b49a5f8c805e3, type: 3}
+  score: {fileID: 4923958240432856075, guid: 91a0c526d266cef4aaceef95c647355a, type: 3}
   playerNum: 3
+  healthAmount: 0

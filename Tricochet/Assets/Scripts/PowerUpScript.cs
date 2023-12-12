@@ -4,12 +4,29 @@ using UnityEngine;
 
 public class PowerUpScript : MonoBehaviour
 {
-    [SerializeField]
-    int pUpID;
+
+    public int randPowerID;
 
     // Start is called before the first frame update
     void Start()
     {
+        randPowerID = Random.Range(1, 6);
+        Color32 powerColor = new Color32(0, 0, 0, 255);
+       
+        if (randPowerID == 1)
+            powerColor = new Color32(255, 0, 0, 255);
+        if (randPowerID == 2)
+            powerColor = new Color32(255, 150, 0, 255);
+        if (randPowerID == 3)
+            powerColor = new Color32(255, 255, 0, 255);
+        if (randPowerID == 4)
+            powerColor = new Color32(0, 255, 0, 255);
+        if (randPowerID == 5)
+            powerColor = new Color32(0, 0, 255, 255);
+        if (randPowerID == 6)
+            powerColor = new Color32(255, 0, 255, 255);
+
+        gameObject.GetComponent<SpriteRenderer>().color = powerColor;
     }
 
     // Update is called once per frame
@@ -37,6 +54,13 @@ public class PowerUpScript : MonoBehaviour
         
     }
 
+    void power()
+    {
+        
+
+       
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -45,8 +69,8 @@ public class PowerUpScript : MonoBehaviour
             gameObject.transform.position = randomPos();
         }
 
-        if (collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2" || collision.gameObject.tag == "Player3")
-            Destroy(gameObject);
+        //if (collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2" || collision.gameObject.tag == "Player3")
+            //Destroy(gameObject);
     }
 
 }

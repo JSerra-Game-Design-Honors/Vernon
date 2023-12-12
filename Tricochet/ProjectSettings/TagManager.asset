@@ -17,6 +17,7 @@ TagManager:
   - OldCanvas3
   - BulletOutline
   - PowerUp
+  - Light
   layers:
   - Default
   - TransparentFX

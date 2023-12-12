@@ -5,18 +5,15 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
-    //IN CODE CHANGE THE LAYERS AND TAGS OF EACH PLAYER AND BULLET TO MATCH THEIR PLAYERNUM, ALSO CHANGE COLOR OF HEALTH!!!
-    //THE FILL AMOUNT IS CHANGING THE PREFAB NOT THE ACTUAL ONE!!!!!! WHY DOES THIS ALWAYS HAPPEN, FIX THIS!!!!
-
     [SerializeField]
     public GameObject HealthBar;
 
     [SerializeField]
-    GameObject Canvas, GameManager;
+    GameObject Canvas, GameManager, score;
 
     public int playerNum;
 
-    private float healthAmount;
+    public float healthAmount;
     private float maxHealth;
 
     // Start is called before the first frame update
@@ -32,8 +29,10 @@ public class HealthManager : MonoBehaviour
         if(playerNum == 1)
         {
             GameObject CanvasObj = Instantiate(Canvas, new Vector3(0, 0, -1), Quaternion.identity);
-            GameObject HealthBar1Obj = Instantiate(HealthBar, new Vector2(-700, 450), Quaternion.identity) as GameObject;
+            GameObject HealthBar1Obj = Instantiate(HealthBar, new Vector2(-650, 450), Quaternion.identity) as GameObject;
             HealthBar1Obj.transform.SetParent(CanvasObj.transform, false);
+            GameObject Score1 = Instantiate(score, new Vector2(-650, 500), Quaternion.identity);
+            Score1.transform.SetParent(CanvasObj.transform, false);
             CanvasObj.tag = "OldCanvas1";
             
         }
@@ -43,19 +42,20 @@ public class HealthManager : MonoBehaviour
             GameObject CanvasObj = Instantiate(Canvas, new Vector3(0, 0, -1), Quaternion.identity);
             GameObject HealthBar2Obj = Instantiate(HealthBar, new Vector2(0, 450), Quaternion.identity) as GameObject;
             HealthBar2Obj.transform.SetParent(CanvasObj.transform, false);
+            GameObject Score2 = Instantiate(score, new Vector2(0, 500), Quaternion.identity);
+            Score2.transform.SetParent(CanvasObj.transform, false);
             CanvasObj.tag = "OldCanvas2";
         }
 
         if(playerNum == 3)
         {
             GameObject CanvasObj = Instantiate(Canvas, new Vector3(0, 0, -1), Quaternion.identity);
-            GameObject HealthBar3Obj = Instantiate(HealthBar, new Vector2(700, 450), Quaternion.identity) as GameObject;
+            GameObject HealthBar3Obj = Instantiate(HealthBar, new Vector2(650, 450), Quaternion.identity) as GameObject;
             HealthBar3Obj.transform.SetParent(CanvasObj.transform, false);
+            GameObject Score3 = Instantiate(score, new Vector2(650, 500), Quaternion.identity);
+            Score3.transform.SetParent(CanvasObj.transform, false);
             CanvasObj.tag = "OldCanvas3";
         }
-
-        //instantiate each healthBar in their correct positions!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //Instantiate(healthBar, new Vector2(-5, 5), Quaternion.identity);
         
 
     }
@@ -73,7 +73,7 @@ public class HealthManager : MonoBehaviour
             //Canvas.GetComponent<CanvasScript>().byebye();
             Destroy(GameObject.FindGameObjectWithTag("OldCanvas1"));
             GameObject CanvasObj = Instantiate(Canvas, new Vector3(0, 0, -1), Quaternion.identity);
-            GameObject HealthBar1Obj = Instantiate(HealthBar, new Vector2(-700, 450), Quaternion.identity) as GameObject;
+            GameObject HealthBar1Obj = Instantiate(HealthBar, new Vector2(-650, 450), Quaternion.identity) as GameObject;
             HealthBar1Obj.transform.SetParent(CanvasObj.transform, false);
             CanvasObj.tag = "OldCanvas1";
 
@@ -94,7 +94,7 @@ public class HealthManager : MonoBehaviour
             //Canvas.GetComponent<CanvasScript>().byebye();
             Destroy(GameObject.FindGameObjectWithTag("OldCanvas3"));
             GameObject CanvasObj = Instantiate(Canvas, new Vector3(0, 0, -1), Quaternion.identity);
-            GameObject HealthBar3Obj = Instantiate(HealthBar, new Vector2(700, 450), Quaternion.identity) as GameObject;
+            GameObject HealthBar3Obj = Instantiate(HealthBar, new Vector2(650, 450), Quaternion.identity) as GameObject;
             HealthBar3Obj.transform.SetParent(CanvasObj.transform, false);
             CanvasObj.tag = "OldCanvas3";
         }
@@ -117,9 +117,14 @@ public class HealthManager : MonoBehaviour
     public void heal(float healingAmount)
     {
         healthAmount += healingAmount;
-        healthAmount = Mathf.Clamp(healthAmount, 0, 10f);
-
-        HealthBar.GetComponent<Image>().fillAmount = healthAmount / maxHealth;
+        float fillAmount = healthAmount / maxHealth;
+        if (healthAmount >= maxHealth)
+        {
+            healthAmount = maxHealth;
+            fillAmount = 1f;
+        }
+        HealthBar.GetComponent<Image>().fillAmount = fillAmount;
+        newHealth();
     }
 
     public bool isDead()

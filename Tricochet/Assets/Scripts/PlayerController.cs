@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //IN CODE CHANGE THE LAYERS AND TAGS OF EACH PLAYER AND BULLET TO MATCH THEIR PLAYERNUM, ALSO CHANGE COLOR OF HEALTH!!!
-    //THE FILL AMOUNT IS CHANGING THE PREFAB NOT THE ACTUAL ONE!!!!!! WHY DOES THIS ALWAYS HAPPEN, FIX THIS!!!!
-
     private Rigidbody2D _rigidbody;
 
     [SerializeField]
@@ -16,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float turnSpeed;
     [SerializeField]
-    public Bullet bulletPrefab;
+    public Bullet bulletPrefab1, bulletPrefab2, bulletPrefab3;
     [SerializeField]
     public GameObject healthPrefab1;
     [SerializeField]
@@ -30,6 +27,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject MainMenuManager;
 
+    public AudioSource audioSourceShoot;
+    public AudioSource audioSourceMove;
+    public AudioClip shootAudio;
+    public AudioClip warbleMove;
+    private bool played = false;
+
     private bool _forwardMoving;
     private bool _backwardsMoving;
     private float _turnDirection;
@@ -42,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public bool IsShootAvailable = true;
     [SerializeField]
     public float ShootCooldownNum = 1f;
+    float maxHealth;
 
     private void Awake()
     {
@@ -52,114 +56,264 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        maxHealth = health;
         if (playerNum == 1)
             healthPrefab1.GetComponent<HealthManager>().setHealth(health); //Debug.Log("health1 is: " + health);
         if (playerNum == 2)
             healthPrefab2.GetComponent<HealthManager>().setHealth(health); //Debug.Log("health2 is: " + health);
         if (playerNum == 3)
             healthPrefab3.GetComponent<HealthManager>().setHealth(health); //Debug.Log("health3 is: " + health);
+        resetBullets(bulletPrefab1.GetComponent<Bullet>().ID);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerNum == 1)
+        if (GameManagerScript.gameState == 1)
         {
-            _forwardMoving = Input.GetKey(KeyCode.W);
-            _backwardsMoving = Input.GetKey(KeyCode.S);
-            if (Input.GetKey(KeyCode.A))
-            { _turnDirection = 1f; }
-            else if (Input.GetKey(KeyCode.D))
-            { _turnDirection = -1f; }
-            else
-            { _turnDirection = 0f; }
+            if (health > maxHealth)
+                health = maxHealth;
 
-
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (IsShootAvailable == false)
-                    return;
-
-                Shoot();
-                StartCoroutine(ShootCooldown());
+                Debug.Log("Player " + playerNum);
+                //Debug.Log("Damage = " + bulletPrefab.GetComponent<Bullet>().damage);
+                //Debug.Log("Bullet LifeTime = " + bulletPrefab.GetComponent<Bullet>().lifeTimeMax);
+                //Debug.Log("Projectile Speed = " + bulletPrefab.GetComponent<Bullet>().projSpeed);
+                Debug.Log("Health = " + healthPrefab1.GetComponent<HealthManager>().healthAmount);
+                Debug.Log("Speed =" + moveSpeed);
+                Debug.Log("Dash Cooldown = " + DashCooldownNum);
             }
 
-
-            if(Input.GetKeyDown(KeyCode.E))
+            if (playerNum == 1)
             {
-                if (IsDashAvailable == false)
-                    return;
+                _forwardMoving = Input.GetKey(KeyCode.W);
+                _backwardsMoving = Input.GetKey(KeyCode.S);
+                if (Input.GetKey(KeyCode.A))
+                { _turnDirection = 1f; }
+                else if (Input.GetKey(KeyCode.D))
+                { _turnDirection = -1f; }
+                else
+                { _turnDirection = 0f; }
 
-                dashSpeed = 5;
 
-                StartCoroutine(DashCooldown());
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    if (IsShootAvailable == false)
+                        return;
+
+                    Shoot();
+                    StartCoroutine(ShootCooldown());
+                }
+
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (IsDashAvailable == false)
+                        return;
+
+                    dashSpeed = 5;
+
+                    StartCoroutine(DashCooldown());
+                }
+
+
+                if (_forwardMoving || _backwardsMoving)
+                {
+                    if (!played) { audioSourceMove.Play(); played = true; }
+                }
+                else { audioSourceMove.Stop(); played = false; }
+
+
             }
 
-            
+            if (playerNum == 2)
+            {
+                _forwardMoving = Input.GetKey(KeyCode.T);
+                _backwardsMoving = Input.GetKey(KeyCode.G);
+                if (Input.GetKey(KeyCode.F))
+                { _turnDirection = 1f; }
+                else if (Input.GetKey(KeyCode.H))
+                { _turnDirection = -1f; }
+                else
+                { _turnDirection = 0f; }
+
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    if (IsShootAvailable == false)
+                        return;
+
+                    Shoot();
+                    StartCoroutine(ShootCooldown());
+                }
+
+                if (Input.GetKeyDown(KeyCode.Y))
+                {
+                    if (IsDashAvailable == false)
+                        return;
+
+                    dashSpeed = 5;
+
+                    StartCoroutine(DashCooldown());
+                }
+
+                if (_forwardMoving || _backwardsMoving)
+                {
+                    if (!played) { audioSourceMove.Play(); played = true; }
+                }
+                else { audioSourceMove.Stop(); played = false; }
+            }
+
+            if (playerNum == 3)
+            {
+                _forwardMoving = Input.GetKey(KeyCode.I);
+                _backwardsMoving = Input.GetKey(KeyCode.K);
+                if (Input.GetKey(KeyCode.J))
+                { _turnDirection = 1f; }
+                else if (Input.GetKey(KeyCode.L))
+                { _turnDirection = -1f; }
+                else
+                { _turnDirection = 0f; }
+
+                if (Input.GetKeyDown(KeyCode.U))
+                {
+                    if (IsShootAvailable == false)
+                        return;
+
+                    Shoot();
+                    StartCoroutine(ShootCooldown());
+                }
+
+                if (Input.GetKeyDown(KeyCode.O))
+                {
+                    if (IsDashAvailable == false)
+                        return;
+
+                    dashSpeed = 5;
+
+                    StartCoroutine(DashCooldown());
+                }
+
+                if (_forwardMoving || _backwardsMoving)
+                {
+                    if (!played) { audioSourceMove.Play(); played = true; }
+                }
+                else { audioSourceMove.Stop(); played = false; }
+            }
+        }
+    }
+
+    void resetBullets(int ID)
+    {
+        if(ID == 1)
+        {
+            bulletPrefab1.GetComponent<Bullet>().projSpeed = 400f;
+            bulletPrefab1.GetComponent<Bullet>().damage = 3f;
+            bulletPrefab1.GetComponent<Bullet>().lifeTime = 3;
+            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 3;
+
+            bulletPrefab2.GetComponent<Bullet>().projSpeed = 400f;
+            bulletPrefab2.GetComponent<Bullet>().damage = 3f;
+            bulletPrefab2.GetComponent<Bullet>().lifeTime = 3;
+            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 3;
+
+            bulletPrefab3.GetComponent<Bullet>().projSpeed = 400f;
+            bulletPrefab3.GetComponent<Bullet>().damage = 3f;
+            bulletPrefab3.GetComponent<Bullet>().lifeTime = 3;
+            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 3;
         }
 
-        if (playerNum == 2)
+        if (ID == 2)
         {
-            _forwardMoving = Input.GetKey(KeyCode.T);
-            _backwardsMoving = Input.GetKey(KeyCode.G);
-            if (Input.GetKey(KeyCode.F))
-            { _turnDirection = 1f; }
-            else if (Input.GetKey(KeyCode.H))
-            { _turnDirection = -1f; }
-            else
-            { _turnDirection = 0f; }
+            bulletPrefab1.GetComponent<Bullet>().projSpeed = 400f;
+            bulletPrefab1.GetComponent<Bullet>().damage = 3f;
+            bulletPrefab1.GetComponent<Bullet>().lifeTime = 3;
+            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 3;
 
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                if (IsShootAvailable == false)
-                    return;
+            bulletPrefab2.GetComponent<Bullet>().projSpeed = 400f;
+            bulletPrefab2.GetComponent<Bullet>().damage = 3f;
+            bulletPrefab2.GetComponent<Bullet>().lifeTime = 3;
+            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 3;
 
-                Shoot();
-                StartCoroutine(ShootCooldown());
-            }
-
-            if (Input.GetKeyDown(KeyCode.Y))
-            {
-                if (IsDashAvailable == false)
-                    return;
-
-                dashSpeed = 5;
-
-                StartCoroutine(DashCooldown());
-            }
+            bulletPrefab3.GetComponent<Bullet>().projSpeed = 400f;
+            bulletPrefab3.GetComponent<Bullet>().damage = 3f;
+            bulletPrefab3.GetComponent<Bullet>().lifeTime = 3;
+            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 3;
         }
 
-        if (playerNum == 3)
+        if (ID == 3)
         {
-            _forwardMoving = Input.GetKey(KeyCode.I);
-            _backwardsMoving = Input.GetKey(KeyCode.K);
-            if (Input.GetKey(KeyCode.J))
-            { _turnDirection = 1f; }
-            else if (Input.GetKey(KeyCode.L))
-            { _turnDirection = -1f; }
-            else
-            { _turnDirection = 0f; }
+            bulletPrefab1.GetComponent<Bullet>().projSpeed = 450f;
+            bulletPrefab1.GetComponent<Bullet>().damage = 4f;
+            bulletPrefab1.GetComponent<Bullet>().lifeTime = 3;
+            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 3;
 
-            if (Input.GetKeyDown(KeyCode.U))
-            {
-                if (IsShootAvailable == false)
-                    return;
+            bulletPrefab2.GetComponent<Bullet>().projSpeed = 450f;
+            bulletPrefab2.GetComponent<Bullet>().damage = 4f;
+            bulletPrefab2.GetComponent<Bullet>().lifeTime = 3;
+            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 3;
 
-                Shoot();
-                StartCoroutine(ShootCooldown());
-            }
-
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                if (IsDashAvailable == false)
-                    return;
-
-                dashSpeed = 5;
-
-                StartCoroutine(DashCooldown());
-            }
+            bulletPrefab3.GetComponent<Bullet>().projSpeed = 450f;
+            bulletPrefab3.GetComponent<Bullet>().damage = 4f;
+            bulletPrefab3.GetComponent<Bullet>().lifeTime = 3;
+            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 3;
         }
+
+        if (ID == 4)
+        {
+            bulletPrefab1.GetComponent<Bullet>().projSpeed = 450f;
+            bulletPrefab1.GetComponent<Bullet>().damage = 2f;
+            bulletPrefab1.GetComponent<Bullet>().lifeTime = 4;
+            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 4;
+
+            bulletPrefab2.GetComponent<Bullet>().projSpeed = 450f;
+            bulletPrefab2.GetComponent<Bullet>().damage = 2f;
+            bulletPrefab2.GetComponent<Bullet>().lifeTime = 4;
+            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 4;
+
+            bulletPrefab3.GetComponent<Bullet>().projSpeed = 450f;
+            bulletPrefab3.GetComponent<Bullet>().damage = 2f;
+            bulletPrefab3.GetComponent<Bullet>().lifeTime = 4;
+            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 4;
+        }
+
+        if (ID == 5)
+        {
+            bulletPrefab1.GetComponent<Bullet>().projSpeed = 350f;
+            bulletPrefab1.GetComponent<Bullet>().damage = 3f;
+            bulletPrefab1.GetComponent<Bullet>().lifeTime = 4;
+            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 4;
+
+            bulletPrefab2.GetComponent<Bullet>().projSpeed = 350f;
+            bulletPrefab2.GetComponent<Bullet>().damage = 3f;
+            bulletPrefab2.GetComponent<Bullet>().lifeTime = 4;
+            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 4;
+
+            bulletPrefab3.GetComponent<Bullet>().projSpeed = 350f;
+            bulletPrefab3.GetComponent<Bullet>().damage = 3f;
+            bulletPrefab3.GetComponent<Bullet>().lifeTime = 4;
+            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 4;
+        }
+
+        if (ID == 6)
+        {
+            bulletPrefab1.GetComponent<Bullet>().projSpeed = 250f;
+            bulletPrefab1.GetComponent<Bullet>().damage = 4f;
+            bulletPrefab1.GetComponent<Bullet>().lifeTime = 5;
+            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 5;
+
+            bulletPrefab2.GetComponent<Bullet>().projSpeed = 250f;
+            bulletPrefab2.GetComponent<Bullet>().damage = 4f;
+            bulletPrefab2.GetComponent<Bullet>().lifeTime = 5;
+            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 5;
+
+            bulletPrefab3.GetComponent<Bullet>().projSpeed = 250f;
+            bulletPrefab3.GetComponent<Bullet>().damage = 4f;
+            bulletPrefab3.GetComponent<Bullet>().lifeTime = 5;
+            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 5;
+        }
+
+
     }
 
     private void FixedUpdate()
@@ -181,20 +335,22 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        Bullet bullet = Instantiate(this.bulletPrefab, this.transform.position, this.transform.rotation);
-        bullet.Project(this.transform.up);
         if(playerNum == 1)
         {
+            audioSourceShoot.PlayOneShot(shootAudio);
+            Bullet bullet = Instantiate(this.bulletPrefab1, this.transform.position, this.transform.rotation);
+            bullet.Project(this.transform.up);
             int layerNum = 9;
             string tagNum = "Bullet1";
             bullet.layerTag(layerNum, tagNum);
-            //find a way to access the color and set it to the bullet
-            //bullet.GetComponent<SpriteRenderer>().color = GameManager.GetComponent<GameManagerScript>().p3c;
             Color32 bc1 = GameManager.GetComponent<GameManagerScript>().bulletColor(MainMenuController.p1Color);
             bullet.GetComponent<SpriteRenderer>().color = bc1;
         }
         if (playerNum == 2)
         {
+            audioSourceShoot.PlayOneShot(shootAudio);
+            Bullet bullet = Instantiate(this.bulletPrefab2, this.transform.position, this.transform.rotation);
+            bullet.Project(this.transform.up);
             int layerNum = 10;
             string tagNum = "Bullet2";
             bullet.layerTag(layerNum,tagNum);
@@ -203,12 +359,150 @@ public class PlayerController : MonoBehaviour
         }
         if (playerNum == 3)
         {
+            audioSourceShoot.PlayOneShot(shootAudio);
+            Bullet bullet = Instantiate(this.bulletPrefab3, this.transform.position, this.transform.rotation);
+            bullet.Project(this.transform.up);
             int layerNum = 11;
             string tagNum = "Bullet3";
             bullet.layerTag(layerNum, tagNum);
             Color32 bc3 = GameManager.GetComponent<GameManagerScript>().bulletColor(MainMenuController.p3Color);
             bullet.GetComponent<SpriteRenderer>().color = bc3;
         }
+
+    }
+
+    void powerPlayerUp(int ID)
+    {
+
+        //They work
+        Debug.Log("PowerUp Script Ran");
+        Debug.Log("ID = " + ID);
+        Debug.Log("PlayerNum = " + playerNum);
+
+        if(playerNum == 1)
+        {
+            if (ID == 1)
+            {
+                //damage up
+                bulletPrefab1.GetComponent<Bullet>().damage++;
+            }
+            if (ID == 2)
+            {
+                //bounce up
+                bulletPrefab1.GetComponent<Bullet>().lifeTimeMax++;
+            }
+            if (ID == 3)
+            {
+                //Bullet speed up
+                bulletPrefab1.GetComponent<Bullet>().projSpeed = bulletPrefab1.GetComponent<Bullet>().projSpeed + 25;
+            }
+            if (ID == 4)
+            {
+                //health up
+                healthPrefab1.GetComponent<HealthManager>().heal(3);
+            }
+            if (ID == 5)
+            {
+                //speed up
+                moveSpeed++;
+            }
+            if (ID == 6)
+            {
+                //dash cooldown down
+                DashCooldownNum = DashCooldownNum - 0.1f;
+
+            }
+        }
+
+        if (playerNum == 2)
+        {
+            if (ID == 1)
+            {
+                //damage up
+                //Debug.Log("Damage was = " + bulletPrefab2.GetComponent<Bullet>().damage);
+                bulletPrefab2.GetComponent<Bullet>().damage++;                
+                //Debug.Log("Damage is = " + bulletPrefab2.GetComponent<Bullet>().damage);
+                
+            }
+            if (ID == 2)
+            {
+                //bounce up
+                //Debug.Log("Bullet LifeTime was = " + bulletPrefab2.GetComponent<Bullet>().lifeTimeMax);
+                bulletPrefab2.GetComponent<Bullet>().lifeTimeMax++;            
+                //Debug.Log("Bullet LifeTime is = " + bulletPrefab2.GetComponent<Bullet>().lifeTimeMax);
+               
+            }
+            if (ID == 3)
+            {
+                //Bullet speed up
+                //Debug.Log("Projectile Speed was = " + bulletPrefab2.GetComponent<Bullet>().projSpeed);
+                bulletPrefab2.GetComponent<Bullet>().projSpeed = bulletPrefab2.GetComponent<Bullet>().projSpeed + 25;
+               // Debug.Log("Projectile Speed is = " + bulletPrefab2.GetComponent<Bullet>().projSpeed);
+               
+            }
+            if (ID == 4)
+            {
+                //health up
+                //Debug.Log("Health was = " + healthPrefab1.GetComponent<HealthManager>().healthAmount);
+                healthPrefab2.GetComponent<HealthManager>().heal(3);
+                //Debug.Log("Health is = " + healthPrefab1.GetComponent<HealthManager>().healthAmount);
+
+            }
+            if (ID == 5)
+            {
+                //speed up
+               // Debug.Log("Speed was =" + moveSpeed);
+                moveSpeed++;
+                //Debug.Log("Speed is =" + moveSpeed);
+            }
+            if (ID == 6)
+            {
+                //dash cooldown down
+                //Debug.Log("Dash Cooldown was = " + DashCooldownNum);
+                DashCooldownNum = DashCooldownNum - 0.1f;
+                //Debug.Log("Dash Cooldown is = " + DashCooldownNum);
+
+            }
+        }
+
+        if (playerNum == 3)
+        {
+            if (ID == 1)
+            {
+                //damage up
+                bulletPrefab3.GetComponent<Bullet>().damage++;
+            }
+            if (ID == 2)
+            {
+                //bounce up
+                bulletPrefab3.GetComponent<Bullet>().lifeTimeMax++;
+            }
+            if (ID == 3)
+            {
+                //Bullet speed up
+                bulletPrefab3.GetComponent<Bullet>().projSpeed = bulletPrefab3.GetComponent<Bullet>().projSpeed + 25;
+            }
+            if (ID == 4)
+            {
+                //health up
+                healthPrefab3.GetComponent<HealthManager>().heal(3);
+            }
+            if (ID == 5)
+            {
+                //speed up
+                moveSpeed++;
+            }
+            if (ID == 6)
+            {
+                //dash cooldown down
+                DashCooldownNum = DashCooldownNum - 0.1f;
+
+            }
+        }
+
+
+
+
 
     }
 
@@ -221,12 +515,13 @@ public class PlayerController : MonoBehaviour
                 if (collision.gameObject.GetComponent<Bullet>().lifeTime < collision.gameObject.GetComponent<Bullet>().lifeTimeMax)
                 {
                     float playerDamage = 0f;
-                    if (collision.gameObject.GetComponent<Bullet>().damage == 2f)
-                        playerDamage = 2f;
-                    if (collision.gameObject.GetComponent<Bullet>().damage == 3f)
-                        playerDamage = 3f;
-                    if (collision.gameObject.GetComponent<Bullet>().damage == 4f)
-                        playerDamage = 4f;
+                    //if (collision.gameObject.GetComponent<Bullet>().damage == 2f)
+                    //    playerDamage = 2f;
+                    //if (collision.gameObject.GetComponent<Bullet>().damage == 3f)
+                    //    playerDamage = 3f;
+                    // if (collision.gameObject.GetComponent<Bullet>().damage == 4f)
+                    //    playerDamage = 4f;
+                    playerDamage = collision.gameObject.GetComponent<Bullet>().damage;
 
                     //Debug.Log("Player1 health down");
                     healthPrefab1.GetComponent<HealthManager>().takeDamage(playerDamage);
@@ -234,6 +529,7 @@ public class PlayerController : MonoBehaviour
                         Destroy(gameObject);
                 }
             }
+
         }
 
         if (playerNum == 2)
@@ -245,12 +541,7 @@ public class PlayerController : MonoBehaviour
                 {
                     //Debug.Log("got bullet component");
                     float playerDamage = 0f;
-                    if (collision.gameObject.GetComponent<Bullet>().damage == 2f)
-                        playerDamage = 2f;
-                    if (collision.gameObject.GetComponent<Bullet>().damage == 3f)
-                        playerDamage = 3f;
-                    if (collision.gameObject.GetComponent<Bullet>().damage == 4f)
-                        playerDamage = 4f;
+                    playerDamage = collision.gameObject.GetComponent<Bullet>().damage;
                     //Debug.Log("Damage Done");
 
                     //Debug.Log("Player2 health down");
@@ -268,12 +559,7 @@ public class PlayerController : MonoBehaviour
                 if (collision.gameObject.GetComponent<Bullet>().lifeTime < collision.gameObject.GetComponent<Bullet>().lifeTimeMax)
                 {
                     float playerDamage = 0f;
-                    if (collision.gameObject.GetComponent<Bullet>().damage == 2f)
-                        playerDamage = 2f;
-                    if (collision.gameObject.GetComponent<Bullet>().damage == 3f)
-                        playerDamage = 3f;
-                    if (collision.gameObject.GetComponent<Bullet>().damage == 4f)
-                        playerDamage = 4f;
+                    playerDamage = collision.gameObject.GetComponent<Bullet>().damage;
 
                     //Debug.Log("Player3 health down");
                     healthPrefab3.GetComponent<HealthManager>().takeDamage(playerDamage);
@@ -286,6 +572,16 @@ public class PlayerController : MonoBehaviour
             
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "PowerUp")
+        {
+            powerPlayerUp(collision.gameObject.GetComponent<PowerUpScript>().randPowerID);
+            Destroy(collision.gameObject);
+        }
+            
     }
 
     public IEnumerator DashCooldown()

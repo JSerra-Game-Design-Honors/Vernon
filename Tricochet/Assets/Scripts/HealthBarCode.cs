@@ -9,8 +9,6 @@ public class HealthBarCode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //do what the sage advice gave you
-        //the healthbar can even reference a health manager, and then update all by itself
 
     }
 
@@ -20,7 +18,6 @@ public class HealthBarCode : MonoBehaviour
         
     }
 
-    //make it so the object is taking damage not the prefab
     public void takeDamageV2(float fill)
     {
         gameObject.GetComponent<Image>().fillAmount = fill;

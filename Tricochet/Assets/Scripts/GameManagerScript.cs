@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManagerScript : MonoBehaviour
 {
-
-    //IN CODE CHANGE THE LAYERS AND TAGS OF EACH PLAYER AND BULLET TO MATCH THEIR PLAYERNUM, ALSO CHANGE COLOR OF HEALTH!!!
-    //THE FILL AMOUNT IS CHANGING THE PREFAB NOT THE ACTUAL ONE!!!!!! WHY DOES THIS ALWAYS HAPPEN, FIX THIS!!!!
 
     [SerializeField]
     GameObject Shooter, Speedster, Sniper, Lightweight, Tank, Trapper, HealthManager1, HealthManager2, HealthManager3, Canvas, powerUp;
@@ -18,6 +16,9 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField]
     public GameObject HealthBar1, HealthBar2, HealthBar3;
 
+    [SerializeField]
+    TMP_Text score1, score2, score3;
+
     GameObject p1, p2, p3;
     Vector2 pos1, pos2, pos3;
 
@@ -27,10 +28,18 @@ public class GameManagerScript : MonoBehaviour
 
     GameObject CanvasObj;
 
+    public int countDownTime;
+    public TMP_Text countDownDisplay;
+    public Canvas countDownCanvas;
+
+    //0 off, 1 on
+    public static int gameState = 1;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        gameState = 0;
 
         pos1 = new Vector2(-8, 0);
         pos2 = new Vector2(0, -3);
@@ -60,7 +69,35 @@ public class GameManagerScript : MonoBehaviour
         p3.tag = "Player3";
         Instantiate(HealthManager3, new Vector2(0, 0), Quaternion.identity);
 
+        //CountDownTimer
+        StartCoroutine(CountdownToStart());
 
+    }
+
+    IEnumerator CountdownToStart()
+    {
+        Canvas CountDownCanvas = Instantiate(countDownCanvas, new Vector2(0f, 0f), Quaternion.identity);
+        TMP_Text newCountDownDisplay = Instantiate(countDownDisplay, new Vector2(0f, 0f), Quaternion.identity);
+        newCountDownDisplay.transform.SetParent(CountDownCanvas.transform);
+        newCountDownDisplay.rectTransform.anchoredPosition = new Vector2(0f, 0f);
+        newCountDownDisplay.gameObject.SetActive(true);
+        //Debug.Log("Start CountDown");
+
+        while (countDownTime > 0)
+        {
+            
+            newCountDownDisplay.text = countDownTime.ToString();
+
+            yield return new WaitForSeconds(1f);
+
+            //Debug.Log("CountDown --");
+            countDownTime--;
+        }
+
+        newCountDownDisplay.text = "GO!";
+        gameState = 1;
+        yield return new WaitForSeconds(1f);
+        newCountDownDisplay.gameObject.SetActive(false);
     }
 
     public Color32 bulletColor(int ID)
@@ -169,8 +206,9 @@ public class GameManagerScript : MonoBehaviour
         if (ID == 6)
             playerColor = new Color32(255, 0, 255, 255);
 
-        
-        p1.GetComponent<SpriteRenderer>().color = playerColor;
+        //WHY THIS NO WORK!!!
+        //p1.GetComponent<SpriteRenderer>().color = playerColor;
+        //score1.color = playerColor;
 
 
         SpriteRenderer[] renderers;
@@ -197,7 +235,10 @@ public class GameManagerScript : MonoBehaviour
         if (ID == 6)
             playerColor = new Color32(255, 0, 255, 255);
 
-        p2.GetComponent<SpriteRenderer>().color = playerColor;
+        //p2.GetComponent<SpriteRenderer>().color = playerColor;
+        //score2.color = playerColor;
+
+
         SpriteRenderer[] renderers;
         renderers = p2.GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer sr in renderers)
@@ -222,11 +263,14 @@ public class GameManagerScript : MonoBehaviour
         if (ID == 6)
             playerColor = new Color32(255, 0, 255, 255);
 
-        p3.GetComponent<SpriteRenderer>().color = playerColor;
+        //p3.GetComponent<SpriteRenderer>().color = playerColor;
+        //score3.color = playerColor;
+
         SpriteRenderer[] renderers;
         renderers = p3.GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer sr in renderers)
             sr.color = playerColor;
+        
         HealthManager3.GetComponent<HealthManager>().HealthBar.GetComponent<Image>().color = playerColor;
     }
 }

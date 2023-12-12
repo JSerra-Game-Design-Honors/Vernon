@@ -54,9 +54,15 @@ MonoBehaviour:
   HealthManager2: {fileID: 7713815727548928555, guid: 12228e98f23036349b57eea50ba6325b, type: 3}
   HealthManager3: {fileID: 7352923299989675920, guid: 225943885722cf44197e977cbe7425cc, type: 3}
   Canvas: {fileID: 7196998422251224934, guid: 756ef13a4946ae94cbf5d4e07b7de0b5, type: 3}
+  powerUp: {fileID: 1332101772412093459, guid: 1bedcd0c5c02f6948ad3770d1d652c2c, type: 3}
   HealthBar1: {fileID: 3588926240115373646, guid: 79463137c4630b94999cee1202697ca2, type: 3}
   HealthBar2: {fileID: 3188324730945832501, guid: 8d0b5476b6ec2204ba75b60ce8055779, type: 3}
   HealthBar3: {fileID: 3067002467674900272, guid: dbf301bd71c5c6b45bb2d4048c48551e, type: 3}
-  HealthBar1Obj: {fileID: 3588926240115373646, guid: 79463137c4630b94999cee1202697ca2, type: 3}
-  HealthBar2Obj: {fileID: 3188324730945832501, guid: 8d0b5476b6ec2204ba75b60ce8055779, type: 3}
-  HealthBar3Obj: {fileID: 3067002467674900272, guid: dbf301bd71c5c6b45bb2d4048c48551e, type: 3}
+  score1: {fileID: 2170323964896911044, guid: 301768f647f6cb64cad17c5b91f9b8c8, type: 3}
+  score2: {fileID: 2170323964896911044, guid: a08940637ebfbc549b9f2c7c6e90b99b, type: 3}
+  score3: {fileID: 2170323964896911044, guid: 91a0c526d266cef4aaceef95c647355a, type: 3}
+  powerUpWaitTime: 1
+  countDownTime: 3
+  countDownDisplay: {fileID: 6491733503638595730, guid: 9af7e5a6f2c30714ba94190d1f2d8bb2, type: 3}
+  countDownCanvas: {fileID: 6560293352693816320, guid: dfeb9413ab0f3b0478487e674cb7268e, type: 3}
+  gamePause: 0

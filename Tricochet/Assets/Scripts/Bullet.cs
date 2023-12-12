@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    //IN CODE CHANGE THE LAYERS AND TAGS OF EACH PLAYER AND BULLET TO MATCH THEIR PLAYERNUM, ALSO CHANGE COLOR OF HEALTH!!!
-
     [SerializeField]
     public float projSpeed = 500.0f;
 
@@ -16,9 +14,16 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     public float damage;
 
+    [SerializeField]
+    public int ID;
+
+    //[SerializeField]
+    //public ParticleSystem ps;
+
     private Rigidbody2D _rigidbody;
     private SpriteRenderer _spriteRenderer;
     public int lifeTimeMax;
+
 
     private void Awake()
     {
@@ -26,6 +31,22 @@ public class Bullet : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         lifeTimeMax = lifeTime;
         lifeTimeLessOne = lifeTimeMax - 1;
+    }
+    
+    void Start()
+    {
+
+
+    }
+
+    private void Update()
+    {
+        Transform[] trans;
+        trans = GetComponentsInChildren<Transform>();
+        foreach (Transform tr in trans)
+        {
+            tr.rotation = transform.rotation;
+        }
     }
 
     public void Project(Vector2 direction)
@@ -48,10 +69,24 @@ public class Bullet : MonoBehaviour
         }
 
         if (layerNum == 9)
+        {
+
+            //ParticleSystem.MainModule ma = ps.main;
+
+            //ma.startColor = new Color(0, 200, 255, 255);
+
             _spriteRenderer.color = new Color32(0, 200, 255, 255);
+        }
+            
         if (layerNum == 10)
+        {
+
+        }
             _spriteRenderer.color = new Color32(255, 180, 0, 255);
         if (layerNum == 11)
+        {
+
+        }
             _spriteRenderer.color = new Color32(0, 255, 60, 255);
 
     }
