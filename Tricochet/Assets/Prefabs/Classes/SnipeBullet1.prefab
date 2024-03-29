@@ -4992,10 +4992,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projSpeed: 450
-  lifeTime: 3
-  damage: 4
+  lifeTime: 5
+  damage: 100
   ID: 3
-  lifeTimeMax: 3
+  lifeTimeMax: 5
 --- !u!1 &6336812160851358480
 GameObject:
   m_ObjectHideFlags: 0

@@ -164,10 +164,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projSpeed: 450
-  lifeTime: 3
+  lifeTime: 4
   damage: 4
   ID: 3
-  lifeTimeMax: 3
+  lifeTimeMax: 4
 --- !u!1 &6336812160851358480
 GameObject:
   m_ObjectHideFlags: 0

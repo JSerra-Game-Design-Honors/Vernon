@@ -209,108 +209,108 @@ public class PlayerController : MonoBehaviour
         {
             bulletPrefab1.GetComponent<Bullet>().projSpeed = 400f;
             bulletPrefab1.GetComponent<Bullet>().damage = 3f;
-            bulletPrefab1.GetComponent<Bullet>().lifeTime = 3;
-            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 3;
+            bulletPrefab1.GetComponent<Bullet>().lifeTime = 5;
+            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 5;
 
             bulletPrefab2.GetComponent<Bullet>().projSpeed = 400f;
             bulletPrefab2.GetComponent<Bullet>().damage = 3f;
-            bulletPrefab2.GetComponent<Bullet>().lifeTime = 3;
-            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 3;
+            bulletPrefab2.GetComponent<Bullet>().lifeTime = 5;
+            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 5;
 
             bulletPrefab3.GetComponent<Bullet>().projSpeed = 400f;
             bulletPrefab3.GetComponent<Bullet>().damage = 3f;
-            bulletPrefab3.GetComponent<Bullet>().lifeTime = 3;
-            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 3;
+            bulletPrefab3.GetComponent<Bullet>().lifeTime = 5;
+            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 5;
         }
 
         if (ID == 2)
         {
             bulletPrefab1.GetComponent<Bullet>().projSpeed = 400f;
             bulletPrefab1.GetComponent<Bullet>().damage = 3f;
-            bulletPrefab1.GetComponent<Bullet>().lifeTime = 3;
-            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 3;
+            bulletPrefab1.GetComponent<Bullet>().lifeTime = 5;
+            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 5;
 
             bulletPrefab2.GetComponent<Bullet>().projSpeed = 400f;
             bulletPrefab2.GetComponent<Bullet>().damage = 3f;
-            bulletPrefab2.GetComponent<Bullet>().lifeTime = 3;
-            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 3;
+            bulletPrefab2.GetComponent<Bullet>().lifeTime = 5;
+            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 5;
 
             bulletPrefab3.GetComponent<Bullet>().projSpeed = 400f;
             bulletPrefab3.GetComponent<Bullet>().damage = 3f;
-            bulletPrefab3.GetComponent<Bullet>().lifeTime = 3;
-            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 3;
+            bulletPrefab3.GetComponent<Bullet>().lifeTime = 5;
+            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 5;
         }
 
         if (ID == 3)
         {
             bulletPrefab1.GetComponent<Bullet>().projSpeed = 450f;
             bulletPrefab1.GetComponent<Bullet>().damage = 4f;
-            bulletPrefab1.GetComponent<Bullet>().lifeTime = 3;
-            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 3;
+            bulletPrefab1.GetComponent<Bullet>().lifeTime = 5;
+            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 5;
 
             bulletPrefab2.GetComponent<Bullet>().projSpeed = 450f;
             bulletPrefab2.GetComponent<Bullet>().damage = 4f;
-            bulletPrefab2.GetComponent<Bullet>().lifeTime = 3;
-            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 3;
+            bulletPrefab2.GetComponent<Bullet>().lifeTime = 5;
+            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 5;
 
             bulletPrefab3.GetComponent<Bullet>().projSpeed = 450f;
             bulletPrefab3.GetComponent<Bullet>().damage = 4f;
-            bulletPrefab3.GetComponent<Bullet>().lifeTime = 3;
-            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 3;
+            bulletPrefab3.GetComponent<Bullet>().lifeTime = 5;
+            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 5;
         }
 
         if (ID == 4)
         {
             bulletPrefab1.GetComponent<Bullet>().projSpeed = 450f;
             bulletPrefab1.GetComponent<Bullet>().damage = 2f;
-            bulletPrefab1.GetComponent<Bullet>().lifeTime = 4;
-            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 4;
+            bulletPrefab1.GetComponent<Bullet>().lifeTime = 6;
+            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 6;
 
             bulletPrefab2.GetComponent<Bullet>().projSpeed = 450f;
             bulletPrefab2.GetComponent<Bullet>().damage = 2f;
-            bulletPrefab2.GetComponent<Bullet>().lifeTime = 4;
-            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 4;
+            bulletPrefab2.GetComponent<Bullet>().lifeTime = 6;
+            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 6;
 
             bulletPrefab3.GetComponent<Bullet>().projSpeed = 450f;
             bulletPrefab3.GetComponent<Bullet>().damage = 2f;
-            bulletPrefab3.GetComponent<Bullet>().lifeTime = 4;
-            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 4;
+            bulletPrefab3.GetComponent<Bullet>().lifeTime = 6;
+            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 6;
         }
 
         if (ID == 5)
         {
             bulletPrefab1.GetComponent<Bullet>().projSpeed = 350f;
             bulletPrefab1.GetComponent<Bullet>().damage = 3f;
-            bulletPrefab1.GetComponent<Bullet>().lifeTime = 4;
-            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 4;
+            bulletPrefab1.GetComponent<Bullet>().lifeTime = 6;
+            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 6;
 
             bulletPrefab2.GetComponent<Bullet>().projSpeed = 350f;
             bulletPrefab2.GetComponent<Bullet>().damage = 3f;
-            bulletPrefab2.GetComponent<Bullet>().lifeTime = 4;
-            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 4;
+            bulletPrefab2.GetComponent<Bullet>().lifeTime = 6;
+            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 6;
 
             bulletPrefab3.GetComponent<Bullet>().projSpeed = 350f;
             bulletPrefab3.GetComponent<Bullet>().damage = 3f;
-            bulletPrefab3.GetComponent<Bullet>().lifeTime = 4;
-            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 4;
+            bulletPrefab3.GetComponent<Bullet>().lifeTime = 6;
+            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 6;
         }
 
         if (ID == 6)
         {
             bulletPrefab1.GetComponent<Bullet>().projSpeed = 250f;
             bulletPrefab1.GetComponent<Bullet>().damage = 4f;
-            bulletPrefab1.GetComponent<Bullet>().lifeTime = 5;
-            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 5;
+            bulletPrefab1.GetComponent<Bullet>().lifeTime = 7;
+            bulletPrefab1.GetComponent<Bullet>().lifeTimeMax = 7;
 
             bulletPrefab2.GetComponent<Bullet>().projSpeed = 250f;
             bulletPrefab2.GetComponent<Bullet>().damage = 4f;
-            bulletPrefab2.GetComponent<Bullet>().lifeTime = 5;
-            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 5;
+            bulletPrefab2.GetComponent<Bullet>().lifeTime = 7;
+            bulletPrefab2.GetComponent<Bullet>().lifeTimeMax = 7;
 
             bulletPrefab3.GetComponent<Bullet>().projSpeed = 250f;
             bulletPrefab3.GetComponent<Bullet>().damage = 4f;
-            bulletPrefab3.GetComponent<Bullet>().lifeTime = 5;
-            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 5;
+            bulletPrefab3.GetComponent<Bullet>().lifeTime = 7;
+            bulletPrefab3.GetComponent<Bullet>().lifeTimeMax = 7;
         }
 
 
@@ -371,13 +371,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void powerPlayerUp(int ID)
+    void 
+        powerPlayerUp(int ID)
     {
 
         //They work
-        Debug.Log("PowerUp Script Ran");
-        Debug.Log("ID = " + ID);
-        Debug.Log("PlayerNum = " + playerNum);
+        //Debug.Log("PowerUp Script Ran");
+        //Debug.Log("ID = " + ID);
+        //Debug.Log("PlayerNum = " + playerNum);
 
         if(playerNum == 1)
         {
@@ -385,6 +386,7 @@ public class PlayerController : MonoBehaviour
             {
                 //damage up
                 bulletPrefab1.GetComponent<Bullet>().damage++;
+                
             }
             if (ID == 2)
             {
@@ -420,9 +422,9 @@ public class PlayerController : MonoBehaviour
             {
                 //damage up
                 //Debug.Log("Damage was = " + bulletPrefab2.GetComponent<Bullet>().damage);
-                bulletPrefab2.GetComponent<Bullet>().damage++;                
+                bulletPrefab2.GetComponent<Bullet>().damage++;
                 //Debug.Log("Damage is = " + bulletPrefab2.GetComponent<Bullet>().damage);
-                
+
             }
             if (ID == 2)
             {
@@ -526,7 +528,11 @@ public class PlayerController : MonoBehaviour
                     //Debug.Log("Player1 health down");
                     healthPrefab1.GetComponent<HealthManager>().takeDamage(playerDamage);
                     if (healthPrefab1.GetComponent<HealthManager>().isDead())
+                    {
                         Destroy(gameObject);
+                        GameManagerScript.playersLeft--;
+                    }
+                        
                 }
             }
 
@@ -547,7 +553,11 @@ public class PlayerController : MonoBehaviour
                     //Debug.Log("Player2 health down");
                     healthPrefab2.GetComponent<HealthManager>().takeDamage(playerDamage);
                     if (healthPrefab2.GetComponent<HealthManager>().isDead())
+                    {
                         Destroy(gameObject);
+                        GameManagerScript.playersLeft--;
+                    }
+                        
                 }
             }
         }
@@ -564,7 +574,11 @@ public class PlayerController : MonoBehaviour
                     //Debug.Log("Player3 health down");
                     healthPrefab3.GetComponent<HealthManager>().takeDamage(playerDamage);
                     if (healthPrefab3.GetComponent<HealthManager>().isDead())
+                    {
                         Destroy(gameObject);
+                        GameManagerScript.playersLeft--;
+                    }
+                        
 
                     //nah man it works
                 }

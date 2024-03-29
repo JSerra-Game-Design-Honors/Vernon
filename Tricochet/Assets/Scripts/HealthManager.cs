@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
@@ -26,15 +28,26 @@ public class HealthManager : MonoBehaviour
     void Start()
     {
         
+        
         if(playerNum == 1)
         {
             GameObject CanvasObj = Instantiate(Canvas, new Vector3(0, 0, -1), Quaternion.identity);
             GameObject HealthBar1Obj = Instantiate(HealthBar, new Vector2(-650, 450), Quaternion.identity) as GameObject;
             HealthBar1Obj.transform.SetParent(CanvasObj.transform, false);
+            HealthBar1Obj.GetComponent<Image>().fillAmount = 1;
             GameObject Score1 = Instantiate(score, new Vector2(-650, 500), Quaternion.identity);
             Score1.transform.SetParent(CanvasObj.transform, false);
+            Score1.GetComponent<TMP_Text>().text = GameManagerScript.p1numWins + "";
             CanvasObj.tag = "OldCanvas1";
-            
+            if (GameManagerScript.sceneNum == 8)
+            {
+                CanvasObj.SetActive(false);
+            }
+            else
+            {
+                CanvasObj.SetActive(true);
+            }
+
         }
 
         if(playerNum == 2)
@@ -42,9 +55,19 @@ public class HealthManager : MonoBehaviour
             GameObject CanvasObj = Instantiate(Canvas, new Vector3(0, 0, -1), Quaternion.identity);
             GameObject HealthBar2Obj = Instantiate(HealthBar, new Vector2(0, 450), Quaternion.identity) as GameObject;
             HealthBar2Obj.transform.SetParent(CanvasObj.transform, false);
+            HealthBar2Obj.GetComponent<Image>().fillAmount = 1;
             GameObject Score2 = Instantiate(score, new Vector2(0, 500), Quaternion.identity);
             Score2.transform.SetParent(CanvasObj.transform, false);
+            Score2.GetComponent<TMP_Text>().text = GameManagerScript.p2numWins + "";
             CanvasObj.tag = "OldCanvas2";
+            if (GameManagerScript.sceneNum == 8)
+            {
+                CanvasObj.SetActive(false);
+            }
+            else
+            {
+                CanvasObj.SetActive(true);
+            }
         }
 
         if(playerNum == 3)
@@ -52,9 +75,19 @@ public class HealthManager : MonoBehaviour
             GameObject CanvasObj = Instantiate(Canvas, new Vector3(0, 0, -1), Quaternion.identity);
             GameObject HealthBar3Obj = Instantiate(HealthBar, new Vector2(650, 450), Quaternion.identity) as GameObject;
             HealthBar3Obj.transform.SetParent(CanvasObj.transform, false);
+            HealthBar3Obj.GetComponent<Image>().fillAmount = 1;
             GameObject Score3 = Instantiate(score, new Vector2(650, 500), Quaternion.identity);
             Score3.transform.SetParent(CanvasObj.transform, false);
+            Score3.GetComponent<TMP_Text>().text = GameManagerScript.p3numWins + "";
             CanvasObj.tag = "OldCanvas3";
+            if (GameManagerScript.sceneNum == 8)
+            {
+                CanvasObj.SetActive(false);
+            }
+            else
+            {
+                CanvasObj.SetActive(true);
+            }
         }
         
 
@@ -75,6 +108,9 @@ public class HealthManager : MonoBehaviour
             GameObject CanvasObj = Instantiate(Canvas, new Vector3(0, 0, -1), Quaternion.identity);
             GameObject HealthBar1Obj = Instantiate(HealthBar, new Vector2(-650, 450), Quaternion.identity) as GameObject;
             HealthBar1Obj.transform.SetParent(CanvasObj.transform, false);
+            GameObject Score1 = Instantiate(score, new Vector2(-650, 500), Quaternion.identity);
+            Score1.transform.SetParent(CanvasObj.transform, false);
+            Score1.GetComponent<TMP_Text>().text = GameManagerScript.p1numWins + "";
             CanvasObj.tag = "OldCanvas1";
 
         }
@@ -86,6 +122,9 @@ public class HealthManager : MonoBehaviour
             GameObject CanvasObj = Instantiate(Canvas, new Vector3(0, 0, -1), Quaternion.identity);
             GameObject HealthBar2Obj = Instantiate(HealthBar, new Vector2(0, 450), Quaternion.identity) as GameObject;
             HealthBar2Obj.transform.SetParent(CanvasObj.transform, false);
+            GameObject Score2 = Instantiate(score, new Vector2(0, 500), Quaternion.identity);
+            Score2.transform.SetParent(CanvasObj.transform, false);
+            Score2.GetComponent<TMP_Text>().text = GameManagerScript.p2numWins + "";
             CanvasObj.tag = "OldCanvas2";
         }
 
@@ -96,6 +135,9 @@ public class HealthManager : MonoBehaviour
             GameObject CanvasObj = Instantiate(Canvas, new Vector3(0, 0, -1), Quaternion.identity);
             GameObject HealthBar3Obj = Instantiate(HealthBar, new Vector2(650, 450), Quaternion.identity) as GameObject;
             HealthBar3Obj.transform.SetParent(CanvasObj.transform, false);
+            GameObject Score3 = Instantiate(score, new Vector2(650, 500), Quaternion.identity);
+            Score3.transform.SetParent(CanvasObj.transform, false);
+            Score3.GetComponent<TMP_Text>().text = GameManagerScript.p3numWins + "";
             CanvasObj.tag = "OldCanvas3";
         }
 

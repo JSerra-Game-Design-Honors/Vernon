@@ -9,6 +9,33 @@ EditorBuildSettings:
     path: Assets/Scenes/HomeScreen.unity
     guid: 24bdfeabd7bb46a4b8e2836571331faa
   - enabled: 1
-    path: Assets/Scenes/LevelTest.unity
+    path: Assets/Scenes/Alfa.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Bravo.unity
+    guid: d210baa5d8a7cf344bc2ddf843a5b518
+  - enabled: 1
+    path: Assets/Scenes/Charlie.unity
+    guid: 654244df07870b141b10a2386491327c
+  - enabled: 1
+    path: Assets/Scenes/Delta.unity
+    guid: 834b3757e0f35b5409ad53dcd08885ca
+  - enabled: 1
+    path: Assets/Scenes/Echo.unity
+    guid: 595ee1d006c7a1640860d5c5fd38c400
+  - enabled: 1
+    path: Assets/Scenes/Foxtrot.unity
+    guid: 6391b024de08bc1449b9c55bbea01fc6
+  - enabled: 1
+    path: Assets/Scenes/Golf.unity
+    guid: 1d02dcf1c45f2224b93b00a0491e6a14
+  - enabled: 1
+    path: Assets/Scenes/Hotel.unity
+    guid: 282dbf9f61cb3574e9a68f0172f33e8d
+  - enabled: 1
+    path: Assets/Scenes/India.unity
+    guid: d6a7ae5321741924da185587a6d80ddc
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: dc92f4cff2c4fce499cd3da1c195226b
   m_configObjects: {}

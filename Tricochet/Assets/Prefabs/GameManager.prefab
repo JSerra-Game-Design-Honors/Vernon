@@ -62,7 +62,7 @@ MonoBehaviour:
   score2: {fileID: 2170323964896911044, guid: a08940637ebfbc549b9f2c7c6e90b99b, type: 3}
   score3: {fileID: 2170323964896911044, guid: 91a0c526d266cef4aaceef95c647355a, type: 3}
   powerUpWaitTime: 1
+  MapPicker: {fileID: 3590278535330084427, guid: f97bcd123f543a1449f4fa7260cae86a, type: 3}
   countDownTime: 3
   countDownDisplay: {fileID: 6491733503638595730, guid: 9af7e5a6f2c30714ba94190d1f2d8bb2, type: 3}
   countDownCanvas: {fileID: 6560293352693816320, guid: dfeb9413ab0f3b0478487e674cb7268e, type: 3}
-  gamePause: 0

@@ -5076,7 +5076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projSpeed: 350
-  lifeTime: 4
+  lifeTime: 6
   damage: 3
   ID: 5
-  lifeTimeMax: 4
+  lifeTimeMax: 6

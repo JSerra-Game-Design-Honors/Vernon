@@ -51,6 +51,10 @@ public class MainMenuController : MonoBehaviour
             p3Color = p3Preview.GetComponent<PlayerPreview>().currentColor;
             SceneManager.LoadScene(1);
         }
+
+        //MAKE SURE TO CHANGE THIS NUMBER WHEN YOU ADD MORE MAPSSSSSSS
+        if (Input.GetKey(KeyCode.A))
+        { SceneManager.LoadScene(7);}
     }
 
     public void classPressed(int i)
